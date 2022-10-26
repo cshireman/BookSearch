@@ -18,8 +18,17 @@ final class GoogleBookServiceTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testGoogleBooksServiceExists() throws {
-        guard GoogleBookService.shared is GoogleBookService else { XCTFail("Book service doesn't exist")}
+    func testSearchFunctionExists() throws {
+        Task {
+            let results = try await GoogleBookService.shared.search("")
+            XCTAssertGreaterThanOrEqual(0, results.count)
+        }
     }
-
+    
+    func testSearchResultsBookResults() throws {
+        Task {
+            let results = try await GoogleBookService.shared.search("Harry Potter")
+            XCTAssertGreaterThanOrEqual(10, results.count)
+        }
+    }
 }
