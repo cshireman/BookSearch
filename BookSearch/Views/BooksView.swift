@@ -8,72 +8,53 @@
 import SwiftUI
 
 struct BooksView: View {
-    @State var searchQuery = ""
-    @State var searchResults: [BookSearchResult] = []
+    @ObservedObject var model: BooksViewModel
     
     var body: some View {
         VStack {
-          List {
-            ForEach(searchResults, id: \.id) { result in
-                NavigationLink(destination: BookDetailView(book: result.volumeInfo)) {
-                    
-                    HStack(alignment: .top) {
-                        BookThumbnail(book: result.volumeInfo)
-                            .frame(width: 75)
-                        
-                        VStack(alignment: .leading) {
-                            Text(result.title)
-                                .font(.headline)
-                                .lineLimit(2)
-                            
-                            if !result.authors.isEmpty {
-                                Text(result.authors)
-                                    .font(.subheadline)
-                                    .lineLimit(2)
-                            }
-                            
-                            if let description = result.description {
-                                Text(description)
-                                    .font(.caption)
-                                    .lineLimit(5)
+            if !model.isSearching {
+                if model.searchResults.count == 0 {
+                    Text(model.emptyTitle)
+                        .font(.title)
+                    Text(model.emptySubtitle)
+                        .font(.subheadline)
+                } else {
+                    List {
+                        ForEach(model.searchResults, id: \.id) { result in
+                            NavigationLink(destination: BookDetailView(book: result.volumeInfo)) {
+                                BookResultView(result: result)
                             }
                         }
-                            
                     }
-              }
+                    .listStyle(.inset)
+                    .padding()
+                }
+                
+            } else {
+                ProgressView("Searching...")
             }
-          }
-          .listStyle(.inset)
-          .padding()
         }
         .navigationBarTitleDisplayMode(.inline)
-        .searchable(text: $searchQuery, placement: .automatic)
+        .searchable(text: $model.searchQuery, placement: .automatic, prompt: "Search Title, Author, or ISBN")
         .onSubmit(of: .search) {
-            searchBooks()
+            model.searchBooks()
         }
         .toolbar {
-          ToolbarItem(placement: .principal) {
-            Text("Books")
-                  .foregroundColor(.black)
-              .font(.largeTitle)
-              .padding()
-          }
-        }
-    }
-    
-    func searchBooks() {
-        if searchQuery.trimmed().isEmpty {
-            searchResults = []
-        } else {
-            Task {
-                searchResults = try await GoogleBookService.shared.search(searchQuery)
+            ToolbarItem(placement: .principal) {
+                Text("Search Books")
+                    .foregroundColor(.black)
+                    .font(.largeTitle)
+                    .padding()
             }
+        }
+        .alert(model.errorMessage, isPresented: $model.showError) {
+            Button("OK", role: .cancel) { }
         }
     }
 }
 
 struct BookView_Previews: PreviewProvider {
     static var previews: some View {
-        BooksView()
+        BooksView(model: BooksViewModel())
     }
 }
