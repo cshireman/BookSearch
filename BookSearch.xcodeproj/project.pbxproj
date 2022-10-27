@@ -17,6 +17,10 @@
 		838711172909EDD4003D14AD /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838711162909EDD4003D14AD /* String+Additions.swift */; };
 		8387111A2909F657003D14AD /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838711192909F657003D14AD /* Book.swift */; };
 		8387111C2909F678003D14AD /* BookSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387111B2909F678003D14AD /* BookSearchResult.swift */; };
+		838711202909F867003D14AD /* BooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387111F2909F867003D14AD /* BooksView.swift */; };
+		838711222909F881003D14AD /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838711212909F881003D14AD /* BookDetailView.swift */; };
+		838711242909F8D9003D14AD /* BookSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838711232909F8D9003D14AD /* BookSearchModel.swift */; };
+		83871126290A29C7003D14AD /* BookThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83871125290A29C7003D14AD /* BookThumbnail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +47,10 @@
 		838711162909EDD4003D14AD /* String+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
 		838711192909F657003D14AD /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		8387111B2909F678003D14AD /* BookSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchResult.swift; sourceTree = "<group>"; };
+		8387111F2909F867003D14AD /* BooksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksView.swift; sourceTree = "<group>"; };
+		838711212909F881003D14AD /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
+		838711232909F8D9003D14AD /* BookSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchModel.swift; sourceTree = "<group>"; };
+		83871125290A29C7003D14AD /* BookThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookThumbnail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +93,8 @@
 		8370E89E2909E3710049983E /* BookSearch */ = {
 			isa = PBXGroup;
 			children = (
+				8387111E2909F857003D14AD /* ViewModels */,
+				8387111D2909F850003D14AD /* Views */,
 				838711182909F64A003D14AD /* Models */,
 				838711152909EDC4003D14AD /* Utilities */,
 				8370E89F2909E3710049983E /* BookSearchApp.swift */,
@@ -136,6 +146,24 @@
 				838711132909E9F2003D14AD /* BookSearchResponse.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8387111D2909F850003D14AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8387111F2909F867003D14AD /* BooksView.swift */,
+				838711212909F881003D14AD /* BookDetailView.swift */,
+				83871125290A29C7003D14AD /* BookThumbnail.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8387111E2909F857003D14AD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				838711232909F8D9003D14AD /* BookSearchModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,11 +269,15 @@
 			files = (
 				8370E8A22909E3710049983E /* ContentView.swift in Sources */,
 				838711172909EDD4003D14AD /* String+Additions.swift in Sources */,
+				838711242909F8D9003D14AD /* BookSearchModel.swift in Sources */,
+				83871126290A29C7003D14AD /* BookThumbnail.swift in Sources */,
 				8387111A2909F657003D14AD /* Book.swift in Sources */,
 				8370E8A02909E3710049983E /* BookSearchApp.swift in Sources */,
+				838711222909F881003D14AD /* BookDetailView.swift in Sources */,
 				838711142909E9F2003D14AD /* BookSearchResponse.swift in Sources */,
 				8387111C2909F678003D14AD /* BookSearchResult.swift in Sources */,
 				838711122909E73E003D14AD /* GoogleBookService.swift in Sources */,
+				838711202909F867003D14AD /* BooksView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

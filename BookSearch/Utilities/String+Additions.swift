@@ -7,8 +7,14 @@
 
 import Foundation
 
+extension String {
+    func trimmed() -> String {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+}
+
 extension String: LocalizedError {
-  public var errorDescription: String? {
-    return self
-  }
+    public var errorDescription: String? {
+        return self
+    }
 }
